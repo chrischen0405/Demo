@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>test5.2</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			img{
+				border: none;
+				height: 500px;
+				width: 800px;
+			}
+			.screen{
+				height: 500px;
+				width: 800px;
+				overflow: visible;
+			}
+			.list{
+				height: 500px;
+				width: 800px;
+				border: solid;
+				border-width: 1px;
+				overflow: hidden;
+				position: relative;
+			}
+			.window{
+				width: 4000px;
+				left: 0px;
+				position: absolute;
+			}
+			.piece{
+				float: left;
+				position: relative;
+				
+			}
+			.select{
+				width: 800px;
+			}
+			button{
+				float: left;
+				margin: 30px;
+				width: 50px;
+			}
+		</style>
+	</head>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script>
+		var now = 0
+		var old = 0
+		$(document).ready(function(){
+			$("#li1").click(function(){
+				now = 0
+				$(".window").animate({
+					left: 0-now+"px"
+				})
+				old = 0-now
+			})
+			$("#li2").click(function(){
+				now = 800
+				$(".window").animate({
+					left: 0-now+"px"
+				})
+				old = 0-now
+			})
+			$("#li3").click(function(){
+				now = 800*2
+				$(".window").animate({
+					left: 0-now+"px"
+				})
+				old = 0-now
+			})
+			$("#li4").click(function(){
+				now = 800*3
+				$(".window").animate({
+					left: 0-now+"px"
+				})
+				old = 0-now
+			})
+			$("#li5").click(function(){
+				now = 800*4
+				$(".window").animate({
+					left: 0-now+"px"
+				})
+				old = 0-now
+			})
+			$("#li6").click(function(){
+				next()
+			})
+			$("#li7").click(function(){
+				back()
+			})
+			function play(){
+				var t = setTimeout(function(){
+					if(old===-3200)
+						old = 0
+					else 
+						old = old - 800
+					$(".window").animate({
+					left: old+"px"
+				})
+					play()
+				},3000)
+			}
+			function next(){
+				if(old===-3200)
+						old = 0
+					else 
+						old = old - 800
+					$(".window").animate({
+					left: old+"px"
+				})
+			}
+			function back(){
+				if(old===0)
+						old = -800*4
+					else 
+						old = old + 800
+					$(".window").animate({
+					left: old+"px"
+				})
+			}
+			play()
+		})
+	</script>
+	<body>
+		<div class="screen">
+			<div class="list">
+					<div class="window">               
+					<div class="piece"> 
+						<a target="_blank" ><img alt="" src="img/img1.jpg"></a>
+					</div>
+					<div class="piece">
+						<a target="_blank" ><img alt="" src="img/img2.jpg"></a>
+					</div>
+					<div class="piece">
+						<a target="_blank" ><img alt="" src="img/img3.jpg"></a>
+					</div>
+					<div class="piece">
+						<a target="_blank" ><img alt="" src="img/img4.jpg"></a>
+					</div>
+					<div class="piece">
+						<a target="_blank" ><img alt="" src="img/img5.jpg"></a>
+					</div>
+				</div>
+			</div>
+			<ul class="select">
+				<button id="li7">上一张</button>
+				<button id="li1">1</button>
+				<button id="li2">2</button>
+				<button id="li3">3</button>
+				<button id="li4">4</button>
+				<button id="li5">5</button>
+				<button id="li6">下一张</button>
+			</ul>
+		</div>
+	</body>
+</html>

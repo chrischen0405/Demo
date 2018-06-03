@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Test5.1</title>
+	</head>
+	<style type="text/css">
+		.first{
+			left: 40%;
+			margin-top: auto;
+			position: relative;
+			height: 100px;
+			width: 20px;
+			border: solid;
+			border-width: 1px;
+			float: left;
+			margin: 0px;
+			text-align: center;
+			writing-mode: tb-rl;
+			background-color: forestgreen;
+		}
+		.second{
+			left: 40%;
+			margin-top: auto;
+			position: relative;
+			height: 100px;
+			width: 200px;
+			border: solid;
+			border-width: 1px;
+			float: left;
+			margin: 0px;
+			background-color: greenyellow;
+		}
+	</style>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".second").hide()
+			$("#div1").click(function(){
+				$("#p2,#p3,#p4,#p5").animate({
+					width:'hide'
+				})
+				$("#p1").animate({
+					width:'show'
+				})
+			})
+			$("#div2").click(function(){
+				$("#p1,#p3,#p4,#p5").animate({
+					width:'hide'
+				})
+				$("#p2").animate({
+					width:'show'
+				})
+			})
+			$("#div3").click(function(){
+				$("#p2,#p1,#p4,#p5").animate({
+					width:'hide'
+				})
+				$("#p3").animate({
+					width:'show'
+				})
+			})
+			$("#div4").click(function(){
+				$("#p2,#p3,#p1,#p5").animate({
+					width:'hide'
+				})
+				$("#p4").animate({
+					width:'show'
+				})
+			})
+			$("#div5").click(function(){
+				$("#p2,#p3,#p4,#p1").animate({
+					width:'hide'
+				})
+				$("#p5").animate({
+					width:'show'
+				})
+			})
+		})
+	</script>
+	<body>
+		<div class="first" id="div1">选项1</div>
+		<p class="second" id="p1">段落1</p>
+		<div class="first" id="div2">选项2</div>
+		<p class="second" id="p2">段落2</p>
+		<div class="first" id="div3">选项3</div>
+		<p class="second" id="p3">段落3</p>
+		<div class="first" id="div4">选项4</div>
+		<p class="second" id="p4">段落4</p>
+		<div class="first" id="div5">选项5</div>
+		<p class="second" id="p5">段落5</p>
+	</body>
+</html>

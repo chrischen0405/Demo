@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style type="text/css">
+		.all{
+			height: 100%;
+			width: 100%;
+		}
+		.windows{
+			text-align: center;
+			margin: 0 auto;
+			height: 600px;
+			width: 1200px;
+			border: solid;
+			border-width: 1px;
+			overflow: hidden;
+			position: relative;
+		}
+		.submit{
+			text-align: center;
+			margin: auto;
+			margin-top: 10px;
+		}
+		#input{
+			width: 200px;
+			margin-right: 10px;
+		}
+		.windows span{
+			position: absolute;
+            top: 10px;
+            left: 20px;
+            display: block;
+            padding: 10px;
+            color: #336688
+		}
+	</style>
+	<body>
+		<div class="all" id="">
+			<div class="windows" id="play"></div>
+			<div class="submit">
+				<input type="text" id="input"/>
+				<button id="send" onclick="inputMessage()">发送</button></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var play = document.getElementById("play")
+		var inputText = document.getElementById("input")
+		var send = document.getElementById("send")
+		var playheight = play.offsetHeight
+		var playwidth = document.body.clientWidth*0.5+600
+		var message = ''
+		document.onkeyup = function(e){
+			var code = e.charCode || e.keyCode
+			if (code === 13){
+				inputMessage()
+			}
+		}
+		function inputMessage(){
+			if (inputText.value.length!=0){
+				message = inputText.value
+				sendMessage(message)
+				message.value=''
+			}
+		}
+		function sendMessage(messagetext){
+			var myMessage = document.createElement('span')
+			myMessage.innerHTML = messagetext
+			myMessage.style.left = playwidth+'px'
+			myMessage.style.top = random(0,playheight-20)+'px'
+			myMessage.style.color = "#"+randomColor()
+			myMessage.style.fontSize = random(10,24)+'px'
+			play.appendChild(myMessage)
+			roll(myMessage)
+		}
+		function roll(op){
+			var t = setInterval(function(){op.style.left=parseInt(op.style.left)-random(0.01,2)+'px'},1)
+		}
+		function random (a,b) {
+			return a+(Math.random()*(b-a))
+		}
+		function randomColor (){
+			var color=Math.ceil(Math.random()*16777215).toString(16)
+			while(color.length < 6){
+				color = 0 + color
+			}
+			return color
+		}
+	</script>
+</html>
