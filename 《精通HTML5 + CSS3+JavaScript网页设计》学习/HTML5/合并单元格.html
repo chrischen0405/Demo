@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>合并单元格</title>
+		<style type="text/css">
+			table tr td{
+				border: solid black 1px;
+			}
+		</style>
+	</head>
+	<body>
+		<p>初始表格</p>
+		<table>
+			<tr>
+				<td>A1</td>
+				<td>B1</td>
+				<td>C1</td>
+			</tr>
+			<tr>
+				<td>A2</td>
+				<td>B2</td>
+				<td>C2</td>
+			</tr>
+			<tr>
+				<td>A3</td>
+				<td>B3</td>
+				<td>C3</td>
+			</tr>
+			<tr>
+				<td>A4</td>
+				<td>B4</td>
+				<td>C4</td>
+			</tr>
+		</table>
+		<p>合并左右单元格</p>
+		<table>
+			<tr>
+				<td colspan="2">A1B1</td>
+				<td>C1</td>
+			</tr>
+			<tr>
+				<td>A2</td>
+				<td>B2</td>
+				<td>C2</td>
+			</tr>
+			<tr>
+				<td>A3</td>
+				<td>B3</td>
+				<td>C3</td>
+			</tr>
+			<tr>
+				<td>A4</td>
+				<td>B4</td>
+				<td>C4</td>
+			</tr>
+		</table>
+		<p>合并上下单元格</p>
+		<table>
+			<tr>
+				<td rowspan="2">A1A2</td>
+				<td>B1</td>
+				<td>C1</td>
+			</tr>
+			<tr>
+				<td>B2</td>
+				<td>C2</td>
+			</tr>
+			<tr>
+				<td>A3</td>
+				<td>B3</td>
+				<td>C3</td>
+			</tr>
+			<tr>
+				<td>A4</td>
+				<td>B4</td>
+				<td>C4</td>
+			</tr>
+		</table>
+		<p>合并上下左右单元格</p>
+		<table>
+			<tr>
+				<td rowspan="2" colspan="2">A1B1<br />A2B2</td>
+				<td>C1</td>
+			</tr>
+			<tr>
+				<td>C2</td>
+			</tr>
+			<tr>
+				<td>A3</td>
+				<td>B3</td>
+				<td>C3</td>
+			</tr>
+			<tr>
+				<td>A4</td>
+				<td>B4</td>
+				<td>C4</td>
+			</tr>
+		</table>
+		<p>单元格的合并实质就是丢弃需要合并的单元格，左右合并即为丢掉右边的单元格，上下合并即为丢掉下面的单元格</p>
+	</body>
+</html>
