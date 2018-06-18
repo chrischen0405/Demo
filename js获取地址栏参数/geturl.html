@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>geturl</title>
+	</head>
+	<body>
+		<div id="print"></div>
+		<button onclick="getvalue()">获取参数</button>
+		<input type="text" name="name" id="input" value="value" />
+		<button onclick="sendvalue()">发送参数</button>
+	</body>
+	<script type="text/javascript">
+		function urlToobj(){
+			var obj={};
+			var url=location.href;//获取url
+			var arr1=url.split('?');//将地址名和传值分离
+			var arr2=arr1[1].split('&');//将传递的各个参数分离
+			var arr3;
+			for (let i=0; i<arr2.length; i++) {
+				arr3=arr2[i].split('=');//获取键对值
+				obj[arr3[0]]=arr3[1];//将键对值写入对象
+			}
+			return obj;
+		}
+		function getvalue(){
+			document.getElementById("print").innerHTML=urlToobj().name;
+			console.log(urlToobj());
+		}
+		function sendvalue(){
+			var value=document.getElementById("input").value;
+			var url="geturl.html?name="+value;
+			window.location.href=url;
+		}
+	</script>
+</html>
