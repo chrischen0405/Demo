@@ -57,7 +57,11 @@
     <div class="row">
         <div class="col-md-8">
             <div class="photo">
-                <img id="photo" src="img/img1.jpg">
+                <img id="photo" src="" alt="pic">
+            </div>
+            <div>
+                <input type="file" id="file">
+                <button id="getImg" class="btn">上传图片</button>
             </div>
             <div>
                 <button id="crop" class="btn">确认裁剪</button>
@@ -116,27 +120,8 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
     var photo = document.getElementById('photo');
-    $(function () {
-        var cropper = new Cropper(photo, options);
-        $('#crop').on('click', function () {
-            $('#result').html(cropper.getCroppedCanvas());
-        })
-        $('#size16').on('click', function () {
-            cropper.setAspectRatio(16 / 9);
-        })
-        $('#size1').on('click', function () {
-            cropper.setAspectRatio(1);
-        })
-        $('#size4').on('click', function () {
-            cropper.setAspectRatio(4 / 3);
-        })
-        $('#size2').on('click', function () {
-            cropper.setAspectRatio(2 / 3);
-        })
-        $('#free').on('click', function () {
-            cropper.setAspectRatio(NaN);
-        })
-    })
+    var flObj = document.getElementById("file")
+    var getImg = document.getElementById("getImg");
 
     var options = {
         aspectRatio: 16 / 9,  //宽高比
@@ -182,6 +167,40 @@
         $('#scaleX').val(e.detail.scaleX);
         $('#scaleY').val(e.detail.scaleY);
     }
+
+    function cropper(photo, options) {
+        var cropper = new Cropper(photo, options);
+        $('#crop').on('click', function () {
+            $('#result').html(cropper.getCroppedCanvas());
+        })
+        $('#size16').on('click', function () {
+            cropper.setAspectRatio(16 / 9);
+        })
+        $('#size1').on('click', function () {
+            cropper.setAspectRatio(1);
+        })
+        $('#size4').on('click', function () {
+            cropper.setAspectRatio(4 / 3);
+        })
+        $('#size2').on('click', function () {
+            cropper.setAspectRatio(2 / 3);
+        })
+        $('#free').on('click', function () {
+            cropper.setAspectRatio(NaN);
+        })
+    }
+
+    getImg.onclick = function () {
+        var file = flObj.files[0];//因为每次只上传了一张图片，所以获取到flObj.files[0];
+        var fReader = new FileReader();
+        fReader.readAsDataURL(file);
+        fReader.onload = function (e) {
+            document.getElementById("photo").src = this.result;
+            cropper(photo, options);
+        }
+    }
+
+    // $(cropper(photo, options));
 </script>
 </body>
 </html>
