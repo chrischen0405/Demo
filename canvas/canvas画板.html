@@ -8,10 +8,15 @@
         #myCanvas {
             border: 1px solid black;
         }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
     </style>
 </head>
 <body>
-<canvas id="myCanvas" width="600px" height="400px">canvas画板</canvas>
+<canvas id="myCanvas" width='800px' height='600px'>canvas画板</canvas>
 <div id="position"></div>
 </body>
 <script>
@@ -31,12 +36,16 @@
             ctx.lineTo(x - c.offsetLeft, y - c.offsetTop);
             ctx.stroke();
         }
+        if (x >= 799 || y >= 599) {//鼠标移除边框停止继续绘制
+            flag = 0;
+        }
     }
     c.onmousedown = function (ev) {
         flag = 1;
         var x = changePos(ev)[0];
         var y = changePos(ev)[1];
         ctx.moveTo(x, y);
+        ctx.lineTo(x + 1, y + 1);//鼠标点击时有反应
     }
     c.onmouseup = function () {
         flag = 0;
