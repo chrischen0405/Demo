@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.bootcss.com/cropperjs/1.3.6/cropper.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css">
     <style>
         img {
             max-width: 100%;
@@ -25,7 +26,7 @@
 
         .photo {
             width: 100%;
-            margin-left: 20px;
+            margin-left: 0;
             margin-top: 20px;
         }
 
@@ -50,14 +51,19 @@
             margin-left: 20px;
             margin-top: 20px;
         }
+
+        #file {
+            margin-left: 20px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <div class="photo">
-                <img id="photo" src="" alt="pic">
+            <div id="photoBox" class="photo">
+                <img id="photo" src="img/img1.jpg">
             </div>
             <div>
                 <input type="file" id="file">
@@ -77,40 +83,42 @@
         <div class="col-md-4">
             <div class="preview"></div>
             <div id="result"></div>
-            <div class="input-group">
-                <span class="input-group-addon">X</span>
-                <input id="x" type="text" class="form-control">
-                <span class="input-group-addon">px</span>
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon">Y</span>
-                <input id="y" type="text" class="form-control">
-                <span class="input-group-addon">px</span>
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon">width</span>
-                <input id="width" type="text" class="form-control">
-                <span class="input-group-addon">px</span>
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon">height</span>
-                <input id="height" type="text" class="form-control">
-                <span class="input-group-addon">px</span>
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon">rotate</span>
-                <input id="rotate" type="text" class="form-control">
-                <span class="input-group-addon">px</span>
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon">scaleX</span>
-                <input id="scaleX" type="text" class="form-control">
-                <span class="input-group-addon">px</span>
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon">scaleY</span>
-                <input id="scaleY" type="text" class="form-control">
-                <span class="input-group-addon">px</span>
+            <div class="hidden-phone">
+                <div class="input-group">
+                    <span class="input-group-addon">X</span>
+                    <input id="x" type="text" class="form-control">
+                    <span class="input-group-addon">px</span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Y</span>
+                    <input id="y" type="text" class="form-control">
+                    <span class="input-group-addon">px</span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">width</span>
+                    <input id="width" type="text" class="form-control">
+                    <span class="input-group-addon">px</span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">height</span>
+                    <input id="height" type="text" class="form-control">
+                    <span class="input-group-addon">px</span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">rotate</span>
+                    <input id="rotate" type="text" class="form-control">
+                    <span class="input-group-addon">px</span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">scaleX</span>
+                    <input id="scaleX" type="text" class="form-control">
+                    <span class="input-group-addon">px</span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">scaleY</span>
+                    <input id="scaleY" type="text" class="form-control">
+                    <span class="input-group-addon">px</span>
+                </div>
             </div>
         </div>
     </div>
@@ -122,6 +130,7 @@
     var photo = document.getElementById('photo');
     var flObj = document.getElementById("file")
     var getImg = document.getElementById("getImg");
+    var photoBox = document.getElementById('photoBox');
 
     var options = {
         aspectRatio: 16 / 9,  //宽高比
@@ -191,16 +200,19 @@
     }
 
     getImg.onclick = function () {
-        var file = flObj.files[0];//因为每次只上传了一张图片，所以获取到flObj.files[0];
+        $('#photoBox').empty();
+        photoBox.innerHTML = '<img id="photo" src="">';
+        file = flObj.files[0];//因为每次只上传了一张图片，所以获取到flObj.files[0];
         var fReader = new FileReader();
         fReader.readAsDataURL(file);
         fReader.onload = function (e) {
             document.getElementById("photo").src = this.result;
-            cropper(photo, options);
+            cropper(document.getElementById("photo"), options);
         }
     }
 
-    // $(cropper(photo, options));
+    cropper(photo, options);
+
 </script>
 </body>
 </html>
