@@ -10,6 +10,7 @@
         - [3 canvas画板](#3-canvas画板)
         - [4 canvas日地月](#4-canvas日地月)
         - [4 canvas烟花效果](#4-canvas烟花效果)
+        - [5 canvas爱心冒泡特效](#5-canvas爱心冒泡特效)
     - [三、jquery](#三jquery)
         - [1 cropper](#1-cropper)
             - [预览](#预览)
@@ -31,7 +32,7 @@
 整张网页都是一个canvas，鼠标移动时会产生交互
 <a href="https://chrischen0405.github.io/Demo/canvas/canvas%E9%BC%A0%E6%A0%87%E4%BA%92%E5%8A%A8%E7%89%B9%E6%95%88/index.html" target="_blank">预览</a>
 ### 2 canvas阴阳鱼
-使用canvas中的arc（）函数绘制太极中的阴阳图案
+使用canvas中的arc()函数绘制太极中的阴阳图案
 <a href="https://chrischen0405.github.io/Demo/canvas/canvas%20arc()%E5%87%BD%E6%95%B0%E7%BB%98%E5%88%B6%E9%98%B4%E9%98%B3%E9%B1%BC.html" target="_blank">预览</a>
 ### 3 canvas画板
 一个简单的canvas实例，具有简单的画板功能
@@ -40,8 +41,10 @@
 使用canvas中的变形功能实现月球绕地球转，地球绕太阳转的动画效果
 <a href="https://chrischen0405.github.io/Demo/canvas/canvas%E7%BB%98%E5%88%B6%E6%97%A5%E5%9C%B0%E6%9C%88.html" target="_blank">预览</a>
 ### 4 canvas烟花效果
-利用canvas实现简易的烟花效果，会向鼠标点击处释放烟花
+利用canvas实现简易的烟花效果，在页面中点击鼠标，会向鼠标点击处释放烟花
 <a href="https://chrischen0405.github.io/Demo/canvas/canvas%E7%83%9F%E8%8A%B1%E7%89%B9%E6%95%88/index.html" target="_blank">预览</a>
+### 5 canvas爱心冒泡特效
+整张网页会不停地冒出爱心并且不停消失，利用canvas的bezierCurveTo()方法绘制爱心，使用requestAnimationFrame重绘完成动画效果<a href="https://chrischen0405.github.io/Demo/canvas/canvas%E7%88%B1%E5%BF%83%E5%86%92%E6%B3%A1%E7%89%B9%E6%95%88/index.html" target="_blank">预览</a>
 ## 三、jquery
 学习jquery时的demo
 ### 1 cropper
