@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>消息滚动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .message {
+            border: solid black 1px;
+            height: 30px;
+            width: 400px;
+            margin-left: 50%;
+            transform: translate(-50%);
+        }
+
+        .message span {
+            margin-left: 10px;
+            float: left;
+            font-size: 22px;
+            width: auto;
+        }
+
+        .scrollBox {
+            float: left;
+            /*border: solid black 1px;*/
+            height: 30px;
+            width: auto;
+            max-width: 300px;
+            overflow: hidden;
+        }
+
+        .scroll_ul {
+            list-style: none;
+        }
+
+        .scroll_ul li {
+            margin-left: 10px;
+            font-size: 22px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="message">
+    <span>消息通知：</span>
+    <div class="scrollBox" id="scrollBox">
+        <ul class="scroll_ul" id="scroll_ul"></ul>
+    </div>
+</div>
+<script>
+    var scrollBox = document.getElementById('scrollBox');
+    var scrollUl = document.getElementById('scroll_ul');
+    var iliHeight = 30;//单行滚动的高度
+    var stayTime = 1500;//消息停留时间
+    var scrollTime = 30;//滚动刷新时间
+    var time;//计时器
+    var List = ['通知1', '通知2', '通知3'];//存放通知消息的列表
+
+    init(List);
+
+    function init(list) {//滚动初始化
+        scrollBox.scrollTop = 0;
+        for (let i = 0; i < list.length; i++) {//将列表中的消息添加到dom树里
+            var li = document.createElement('li');
+            li.innerHTML = list[i];
+            scrollUl.appendChild(li);
+        }
+        scrollBox.innerHTML += scrollBox.innerHTML;//克隆一份一样的内容
+        setTimeout(startScroll, stayTime);//列表开始滚动
+    }
+
+    function startScroll() {//列表滚动
+        time = setInterval(scrollUp, scrollTime);
+        scrollBox.scrollTop++;
+    }
+
+    function scrollUp() {//列表向上滚动
+        if (scrollBox.scrollTop % iliHeight === 0) {//滚动一条消息的高度停止计时
+            clearInterval(time);
+            setTimeout(startScroll, stayTime);
+        } else {//滚动不足一条消息的高度继续滚动
+            scrollBox.scrollTop++;
+            if (scrollBox.scrollTop >= scrollBox.scrollHeight / 2) {//滚动完一个列表以后重新开始滚动
+                scrollBox.scrollTop = 0;
+            }
+        }
+    }
+</script>
+</body>
+</html>
