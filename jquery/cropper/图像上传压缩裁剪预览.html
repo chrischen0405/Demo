@@ -163,7 +163,7 @@
      */
     function compress(image) {
         console.log("compress");
-        console.log(image);
+        console.log(image.src.length);
 
         var canvas = document.createElement("canvas");
         var ctx = canvas.getContext("2d");
@@ -221,13 +221,15 @@
                 console.log(imageSize);
                 var image = new Image();
                 image.src = e.target.result;
-                image.onload = function() {
+                image.onload = function () {
                     // 压缩图片
-                    image=judgeCompress(image, imageSize);
+                    image = judgeCompress(image, imageSize);
+                    console.log(image.src.length);
+                    document.getElementById("photo").src = image.src;
+                    console.log(document.getElementById('photo').src.length);
+                    cropper(document.getElementById("photo"), options);
+                    console.log(image.src);
                 };
-                document.getElementById("photo").src = image.src;
-                console.log(document.getElementById('photo').src.length);
-                cropper(document.getElementById("photo"), options);
             }
 
         }
