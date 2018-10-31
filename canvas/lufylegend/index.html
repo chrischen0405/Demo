@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拼图华容道</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.bootcss.com/cropperjs/1.3.6/cropper.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">
+    <style>
+        .time, .steps {
+            position: absolute;
+            margin-left: 20%;
+            margin-top: 5%;
+        }
+
+        .steps {
+            margin-top: 10%;
+        }
+    </style>
+</head>
+<body>
+<input type="file" id="file" multiple="multiple" accept="image/*" style="display: none">
+
+<div class="weui-uploader__input-box getImg">
+    <input id="getImg" class="weui-uploader__input">
+</div>
+
+<div id="uploadPhotoBox" class="page gallery js_show img" style="display: none">
+    <div class="weui-gallery" style="display: block">
+        <div id="photoBox" class="photo weui-gallery__img">
+            <img id="photo" style="max-width: 100%" src="">
+        </div>
+        <div class="weui-gallery__opr">
+            <a>
+                <i id="crop" style="font-size: 1rem">确定</i>
+                <i id="cancel" style="font-size: 1rem;margin-left: 50%">取消</i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="game" style="display: none">
+    <div class="time">时间： <span id="time">99</span></div>
+    <div class="steps">步数： <span id="steps">0</span></div>
+    <div id="myGame"></div>
+</div>
+<script src="js/lib/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.bootcss.com/cropperjs/1.3.6/cropper.min.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.3/weui.min.js"></script>
+<script src="js/lib/lufylegend-1.10.1.simple.min.js"></script>
+<script>
+    var imgResult;
+    var imgResultImg = new Image();
+</script>
+<script src="js/cropper.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
