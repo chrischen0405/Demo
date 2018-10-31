@@ -16,6 +16,26 @@
         .steps {
             margin-top: 10%;
         }
+
+        .tool {
+            position: absolute;
+            z-index: 2;
+            background-color: #111111;
+            width: 100%;
+        }
+
+        .tool i {
+            font-size: 1rem;
+            color: white;
+            right: 0;
+            float: right;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        #cancel {
+            float: left;
+        }
     </style>
 </head>
 <body>
@@ -30,10 +50,10 @@
         <div id="photoBox" class="photo weui-gallery__img">
             <img id="photo" style="max-width: 100%" src="">
         </div>
-        <div class="weui-gallery__opr">
+        <div class="tool">
             <a>
-                <i id="crop" style="font-size: 1rem">确定</i>
-                <i id="cancel" style="font-size: 1rem;margin-left: 50%">取消</i>
+                <i id="crop">确定</i>
+                <i id="cancel">取消</i>
             </a>
         </div>
     </div>
