@@ -40,11 +40,11 @@
 </head>
 <body>
 <input type="file" id="file" multiple="multiple" accept="image/*" style="display: none">
-
+<!--图片上传按钮-->
 <div class="weui-uploader__input-box getImg">
     <input id="getImg" class="weui-uploader__input">
 </div>
-
+<!--图片上传-->
 <div id="uploadPhotoBox" class="page gallery js_show img" style="display: none">
     <div class="weui-gallery" style="display: block">
         <div id="photoBox" class="photo weui-gallery__img">
@@ -58,7 +58,7 @@
         </div>
     </div>
 </div>
-
+<!--游戏-->
 <div class="game" style="display: none">
     <div class="time">时间： <span id="time">99</span></div>
     <div class="steps">步数： <span id="steps">0</span></div>
@@ -69,8 +69,8 @@
 <script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.3/weui.min.js"></script>
 <script src="js/lib/lufylegend-1.10.1.simple.min.js"></script>
 <script>
-    var imgResult;
-    var imgResultImg = new Image();
+    var imgResult;//裁剪出来图片的base64值
+    var imgResultImg = new Image();//裁剪出来的图片对象
 </script>
 <script src="js/cropper.js"></script>
 <script src="js/game.js"></script>

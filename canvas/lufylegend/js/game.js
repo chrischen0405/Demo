@@ -1,10 +1,8 @@
 /** 初始化游戏 */
 var gameWidth = 390;
 var gameHeight = 390;
-
 /** 游戏层 */
 var stageLayer, gameLayer, overLayer;
-
 /** 拼图块列表 */
 var blockList;
 /** 是否游戏结束 */
@@ -14,21 +12,18 @@ var isGameOver,
 var startTime, time, countTime;
 /** 步数 */
 var steps;
+/** 图片 */
+var imgBmpd, startNewGame, fail, startBitmap, Again, failBitmap, againBitmap, succeed, succeedBitmap;
 
-// 图片
-var imgBmpd, puzzleBg;
-var startNewGame, fail, startBitmap, Again, failBitmap, againBitmap, succeed, succeedBitmap;
+var _blockList = [];//拼图序列
+var datalist = [];//存放图片
 
-var _blockList = [];
-
-function main() {
+function main() {//游戏资源初始化
     /** 全屏设置 */
     if (LGlobal.mobile) {
         LGlobal.width = gameWidth;
         LGlobal.height = gameHeight;
-        // LGlobal.align = LStageAlign.TOP_MIDDLE;
         LGlobal.stageScale = LStageScaleMode.SHOW_ALL;
-        // LGlobal.stageScale = LStageScaleMode.EXACT_FIT;
     }
     LGlobal.screen(LGlobal.FULL_SCREEN);
     LGlobal.preventDefault = false;
@@ -49,7 +44,6 @@ function main() {
             {name: "fail", path: "./images/fail.png"},
             {name: "Again", path: "./images/challengeAgain.png"},
             {name: "succeed", path: "./images/succeed.png"},
-
         ],
         null,
         function (result) {
@@ -64,10 +58,7 @@ function main() {
     );
 }
 
-var datalist = [];
-
-function gameInit(e) {
-
+function gameInit(e) {//游戏内容初始化
     datalist = e;
     var bitmapData = new LBitmapData(imgResultImg);
     var bitmap = new LBitmap(bitmapData);
@@ -106,7 +97,7 @@ function gameInit(e) {
     addBeginningUI();
 }
 
-function addBeginningUI() {
+function addBeginningUI() {//游戏开始界面
     var beginningLayer = new LSprite();
     beginningLayer.graphics.drawRect(0, "", [0, 0, LGlobal.width, LGlobal.height], true, "transparent");
     stageLayer.addChild(beginningLayer);
@@ -144,11 +135,10 @@ function addBeginningUI() {
 }
 
 
-function startGame() {
+function startGame() {//开始游戏
     isGameOver = false;
     isTimeOver = false;
 
-    console.log('start');
     /** 初始化时间和步数 */
     startTime = (new Date()).getTime();
     countTime = 0;
@@ -165,7 +155,7 @@ function startGame() {
     stageLayer.addEventListener(LEvent.ENTER_FRAME, onFrame);
 }
 
-function initBlockList() {
+function initBlockList() {//初始化拼图列表
     blockList = new Array();
 
     for (var i = 0; i < 9; i++) {
@@ -176,7 +166,7 @@ function initBlockList() {
 
 }
 
-function getRandomBlockList() {
+function getRandomBlockList() {//随机打乱拼图
 
     /** 随机打乱拼图 */
     blockList.sort(function () {
@@ -216,7 +206,7 @@ function getRandomBlockList() {
     }
 }
 
-function showBlock() {
+function showBlock() {//显示拼图
     for (var i = 0, l = blockList.length; i < l; i++) {
         var b = blockList[i];
 
@@ -229,7 +219,7 @@ function showBlock() {
     }
 }
 
-function updateTimeTxt() {
+function updateTimeTxt() {//更新时间
     $('#time').html(getTimeTxt());
 }
 
@@ -239,11 +229,11 @@ function getTimeTxt() {
     return countTime;
 }
 
-function updateStepsTxt() {
+function updateStepsTxt() {//更新步数
     $('#steps').html(steps);
 }
 
-function onFrame() {
+function onFrame() {//计时
 
     if (isGameOver) {
         return;
@@ -257,22 +247,18 @@ function onFrame() {
     /** 计算使用的时间并更新时间显示 */
     time = currentTime - startTime;
 
-    // 倒计时
-    if (countTime > 0) {
+    if (countTime > 0) {// 倒计时
         updateTimeTxt();
     } else {
         timeOver();
     }
-
 }
 
-// 判断时间是否结束 失败
-function timeOver() {
+function timeOver() {// 判断时间是否结束 失败
     isTimeOver = true;
 
     var resultLayer = new LSprite();
     resultLayer.filters = [new LDropShadowFilter()];
-    // resultLayer.graphics.drawRoundRect(3, "#BBBBBB", [0, 80, 384, 390, 5], true, "rgba(0,0,0,.6)");
     resultLayer.graphics.drawRoundRect(3, "#BBBBBB", [0, 0, 390, 450, 5], true, "rgba(0,0,0,.6)");
     resultLayer.x = (LGlobal.width - resultLayer.getWidth()) / 2;
     resultLayer.y = LGlobal.height / 2;
@@ -306,19 +292,15 @@ function timeOver() {
     });
 }
 
-
-// 成功
-function gameOver() {
+function gameOver() {// 游戏成功
     let score = 99 - getTimeTxt(time);
     let blockList = _blockList.join("-");
     let step = steps;
     isGameOver = true;
-
     console.log('用时：' + getTimeTxt(time) + '步数：' + step + '分数：' + score + '序列：' + blockList);
 
     var resultLayer = new LSprite();
     resultLayer.filters = [new LDropShadowFilter()];
-    // resultLayer.graphics.drawRoundRect(3, "#BBBBBB", [0, 80, 384, 390, 5], true, "rgba(0,0,0,.6)");
     resultLayer.graphics.drawRoundRect(3, "#BBBBBB", [0, 0, 390, 450, 5], true, "rgba(0,0,0,.6)");
     resultLayer.x = (LGlobal.width - resultLayer.getWidth()) / 2;
     resultLayer.y = LGlobal.height / 2;
@@ -350,5 +332,4 @@ function gameOver() {
             });
         }
     });
-
 }

@@ -66,7 +66,7 @@ Block.exchangePosition = function (b1, b2) {
     Block.isGameOver();
 };
 
-Block.prototype.setLocation = function (x, y) {
+Block.prototype.setLocation = function (x, y) {//方块位置
     this.locationX = x;
     this.locationY = y;
 
@@ -74,7 +74,7 @@ Block.prototype.setLocation = function (x, y) {
     this.y = y * 130 + 0;
 };
 
-Block.prototype.onClick = function (e) {
+Block.prototype.onClick = function (e) {//方块的点击事件
     var self = e.currentTarget;
 
     if (isGameOver) {
@@ -104,11 +104,8 @@ Block.prototype.onClick = function (e) {
     }
 
     for (var i = 0, l = checkList.length; i < l; i++) {
-        //console.log(checkList);
-
         var checkO = checkList[i];
 
-        //console.log(checkO)
         /** 判断是否是空白拼图块 */
         if (checkO.index == 8) {
             steps++;
@@ -117,12 +114,9 @@ Block.prototype.onClick = function (e) {
             Block.exchangePosition(self, checkO);
             var str = "";
             for (var i = 0; i < blockList.length; i++) {
-
                 str = str + blockList[i].index;
-                //console.log(str);
             }
             _blockList.push(str);
-            //console.log(_blockList);
 
             break;
         }
