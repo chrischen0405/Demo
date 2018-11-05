@@ -24,6 +24,9 @@
     - [六、JavaScript](#六javascript)
         - [1 去除数组重复元素（6种方法）](#1-去除数组重复元素6种方法)
         - [2 JavaScript实现消息列表滚动](#2-javascript实现消息列表滚动)
+    - [七、CSS](#七css)
+        - [1 圣杯布局](#1-圣杯布局)
+        - [2 双飞翼布局](#2-双飞翼布局)
 
 <!-- /TOC -->
 
@@ -80,3 +83,8 @@
 - 方法六，双重循环比较值，如果相同，使用splice删去后一个相同的值
 ### 2 JavaScript实现消息列表滚动
 <a href="https://chrischen0405.github.io/Demo/JavaScript/消息滚动.html" target="_blank">预览</a>
+## 七、CSS
+### 1 圣杯布局
+CSS经典三列布局，左右两栏固定，中间自适应，<a href="https://chrischen0405.github.io/Demo/HTML&CSS/%E5%B8%83%E5%B1%80/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80.html" target="_blank">预览</a>
+### 2 双飞翼布局
+同圣杯布局，三列布局，左右两栏固定，中间自适应，<a href="https://chrischen0405.github.io/Demo/HTML&CSS/%E5%B8%83%E5%B1%80/%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80.html" target="_blank">预览</a>
