@@ -19,12 +19,10 @@
     - [四、Phaser](#四phaser)
         - [1 pickApple](#1-pickapple)
             - [预览](#预览-1)
-    - [五、Vue学习](#五vue学习)
-        - [1 循环输出图片](#1-循环输出图片)
-    - [六、JavaScript](#六javascript)
+    - [五、JavaScript](#五javascript)
         - [1 去除数组重复元素（6种方法）](#1-去除数组重复元素6种方法)
         - [2 JavaScript实现消息列表滚动](#2-javascript实现消息列表滚动)
-    - [七、CSS](#七css)
+    - [六、CSS](#六css)
         - [1 圣杯布局](#1-圣杯布局)
         - [2 双飞翼布局](#2-双飞翼布局)
 
@@ -68,11 +66,7 @@
 一个接苹果小游戏的实例<a href="https://segmentfault.com/a/1190000009212221" target="_blank">原作者</a>
 #### 预览
 最好在手机端<a href="https://chrischen0405.github.io/Demo/Phaser/pickApple/index.html" target="_blank">预览</a>
-## 五、Vue学习
-学习vue时的demo
-### 1 循环输出图片
-主要使用v-for完成图片的循环输出
-## 六、JavaScript
+## 五、JavaScript
 学习JavaScript时遇到的那些坑
 ### 1 去除数组重复元素（6种方法）
 - 方法一，使用数组的indexof方法，如果element的index不相等则说明element相同，则过滤掉
@@ -83,7 +77,7 @@
 - 方法六，双重循环比较值，如果相同，使用splice删去后一个相同的值
 ### 2 JavaScript实现消息列表滚动
 <a href="https://chrischen0405.github.io/Demo/JavaScript/消息滚动.html" target="_blank">预览</a>
-## 七、CSS
+## 六、CSS
 ### 1 圣杯布局
 CSS经典三列布局，左右两栏固定，中间自适应，<a href="https://chrischen0405.github.io/Demo/HTML&CSS/%E5%B8%83%E5%B1%80/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80.html" target="_blank">预览</a>
 ### 2 双飞翼布局
