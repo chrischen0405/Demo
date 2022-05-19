@@ -22,6 +22,8 @@
     - [五、JavaScript](#五javascript)
         - [1 去除数组重复元素（6种方法）](#1-去除数组重复元素6种方法)
         - [2 JavaScript实现消息列表滚动](#2-javascript实现消息列表滚动)
+        - [3 JavaScript取url后参数](#3-JavaScript取url后参数)
+        - [4 洗牌函数](#4-洗牌函数)
     - [六、CSS](#六css)
         - [1 圣杯布局](#1-圣杯布局)
         - [2 双飞翼布局](#2-双飞翼布局)
@@ -125,6 +127,10 @@
 ### 2 JavaScript实现消息列表滚动
 
 <a href="https://chrischen0405.github.io/Demo/JavaScript/消息滚动.html" target="_blank">预览</a>
+
+### 3 JavaScript取url后参数
+
+### 4 洗牌函数
 
 ## 六、CSS
 
