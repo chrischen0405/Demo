@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.message {
+    border: solid black 1px;
+    height: 30px;
+    width: 400px;
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+
+.message span {
+    margin-left: 10px;
+    float: left;
+    font-size: 22px;
+    width: auto;
+}
+
+.scrollBox {
+    float: left;
+    /*border: solid black 1px;*/
+    height: 30px;
+    width: auto;
+    max-width: 300px;
+    overflow: hidden;
+}
+
+.scroll_ul {
+    list-style: none;
+}
+
+.scroll_ul li {
+    margin-left: 10px;
+    font-size: 22px;
+    height: 30px;
+}

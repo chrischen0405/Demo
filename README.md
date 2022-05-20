@@ -126,7 +126,7 @@
 
 ### 2 JavaScript实现消息列表滚动
 
-<a href="https://chrischen0405.github.io/Demo/JavaScript/消息滚动.html" target="_blank">预览</a>
+<a href="https://chrischen0405.github.io/Demo/JavaScript/5-2消息滚动/index.html" target="_blank">预览</a>
 
 ### 3 JavaScript取url后参数
 
