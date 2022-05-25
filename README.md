@@ -28,6 +28,7 @@
         - [1 圣杯布局](#1-圣杯布局)
         - [2 双飞翼布局](#2-双飞翼布局)
         - [3 按钮涟漪](#3-按钮涟漪)
+        - [4 绘制三角形](#4-绘制三角形)
 
 <!-- /TOC -->
 
@@ -155,3 +156,8 @@ CSS经典三列布局，左右两栏固定，中间自适应
 
 <a href="https://chrischen0405.github.io/Demo/HTML&CSS/6-3按钮涟漪.html" target="_blank">预览</a>
 
+### 4 绘制三角形
+
+方向依次为上、下、左、右的三角形
+
+<a href="https://chrischen0405.github.io/Demo/HTML&CSS/6-4triangle/index.html" target="_blank">预览</a>

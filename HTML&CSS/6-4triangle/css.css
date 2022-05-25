@@ -1,0 +1,23 @@
+.triangle-box {
+    width: 0;
+    height: 0;
+    border-width: 30px;
+    border-style: solid;
+    border-color: transparent;
+}
+
+.top-triangle {
+    border-bottom-color: red;
+}
+
+.bottom-triangle {
+    border-top-color: yellow;
+}
+
+.left-triangle {
+    border-right-color: blue;
+}
+
+.right-triangle {
+    border-left-color: green;
+}
