@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue双向绑定v-model实现原理</title>
+</head>
+<body>
+<div id="app">
+  <div>
+    <input v-model="name" placeholder="姓名" />
+    <input v-model="age" placeholder="年龄" />
+    <input v-model="email" placeholder="邮箱" />
+    <input v-model="tel" placeholder="电话" />
+  </div>
+  <div>
+    <p>姓名:<span>{{ name }}</span></p>
+    <p>年龄:<span>{{ age }}</span></p>
+    <p>邮箱:<span>{{ email }}</span></p>
+    <p>电话:<span>{{ tel }}</span></p>
+  </div>
+  <button id="btn">更改姓名</button>
+</div>
+
+<script src="mvvm.js"></script>
+
+<script>
+const app = new MVVM('#app', {
+  name: '',
+  age: '',
+  email: '',
+  tel: '',
+})
+
+document.querySelector('#btn').addEventListener('click', function () {
+  app.setData('name', 'chris')
+})
+</script>
+</body>
+</html>
