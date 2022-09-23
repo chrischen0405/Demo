@@ -1,42 +1,5 @@
 # Demo
 
-<!-- TOC -->
-
-- [Demo](#demo)
-    - [一、AJAX_Demo](#一ajax_demo)
-    - [二、canvas](#二canvas)
-        - [1 canvas鼠标互动特效](#1-canvas鼠标互动特效)
-        - [2 canvas阴阳鱼](#2-canvas阴阳鱼)
-        - [3 canvas画板](#3-canvas画板)
-        - [4 canvas日地月](#4-canvas日地月)
-        - [4 canvas烟花效果](#4-canvas烟花效果)
-        - [5 canvas爱心冒泡特效](#5-canvas爱心冒泡特效)
-        - [6 canvas扭蛋机](#6-canvas扭蛋机)
-        - [7 lufylegend拼图华容道小游戏](#7-lufylegend拼图华容道小游戏)
-    - [三、jquery](#三jquery)
-        - [1 cropper](#1-cropper)
-            - [预览](#预览)
-    - [四、Phaser](#四phaser)
-        - [1 pickApple](#1-pickapple)
-            - [预览](#预览-1)
-    - [五、JavaScript](#五javascript)
-        - [1 去除数组重复元素（6种方法）](#1-去除数组重复元素6种方法)
-        - [2 JavaScript实现消息列表滚动](#2-javascript实现消息列表滚动)
-        - [3 JavaScript取url后参数](#3-JavaScript取url后参数)
-        - [4 洗牌函数](#4-洗牌函数)
-    - [六、CSS](#六css)
-        - [1 圣杯布局](#1-圣杯布局)
-        - [2 双飞翼布局](#2-双飞翼布局)
-        - [3 按钮涟漪](#3-按钮涟漪)
-        - [4 绘制三角形](#4-绘制三角形)
-        - [5 清除浮动](#5-清除浮动)
-    - [七、Echarts](#七Echarts)
-        - [1 ecahrts雷达图tooltip显示单轴数据](#1-ecahrts雷达图tooltip显示单轴数据)
-    - [八、Vue](#八Vue)
-        - [1 双向绑定](#1-双向绑定)
-
-<!-- /TOC -->
-
 ## 一、AJAX_Demo
 
 一个简单的ajax实例
