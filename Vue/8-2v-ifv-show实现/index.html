@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue v-if/v-show实现原理</title>
+  <style>
+  .box-wrapper {
+    width: 800px;
+    height: 200px;
+  }
+
+  .box {
+    float: left;
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+  }
+
+  .box1 {
+    background: green;
+  }
+
+  .box2 {
+    background: orange;
+  }
+
+  .box3 {
+    background: red;
+  }
+
+  .box4 {
+    background: blue;
+  }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div class="box-wrapper">
+    <div class="box box1" v-if="boxShow1">BOX 1</div>
+    <div class="box box2" v-show="boxShow2">BOX 2</div>
+    <div class="box box3" v-if="boxShow3">BOX 3</div>
+    <div class="box box4" v-show="boxShow4">BOX 4</div>
+  </div>
+  <button @click="showBox1">BOX 1</button>
+  <button @click="showBox2">BOX 2</button>
+  <button @click="showBox3">BOX 3</button>
+  <button @click="showBox4">BOX 4</button>
+</div>
+
+<script src="mvvm.js"></script>
+<script>
+new MVVM({
+  el: '#app',
+  data: {
+    boxShow1: false,
+    boxShow2: false,
+    boxShow3: false,
+    boxShow4: false,
+  },
+  methods: {
+    showBox1 () {
+      this.boxShow1 = !this.boxShow1
+    },
+    showBox2 () {
+      this.boxShow2 = !this.boxShow2
+    },
+    showBox3 () {
+      this.boxShow3 = !this.boxShow3
+    },
+    showBox4 () {
+      this.boxShow4 = !this.boxShow4
+    },
+  }
+})
+</script>
+</body>
+</html>

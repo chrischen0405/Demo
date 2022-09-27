@@ -145,3 +145,9 @@ Echarts的一些配置项
 Vue双向绑定v-model的简单实现原理
 
 <a href="https://chrischen0405.github.io/Demo/Vue/8-1双向绑定实现/index.html" target="_blank">预览</a>
+
+### 2 v-if v-show
+
+Vue v-if/v-show的简单实现原理
+
+<a href="https://chrischen0405.github.io/Demo/Vue/8-2v-ifv-show实现/index.html" target="_blank">预览</a>
