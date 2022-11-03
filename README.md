@@ -105,6 +105,12 @@
 
 ### 6 回调函数
 
+### 7 原型
+
+- 原型链、原型链继承
+- 实现`Object.prototype`特性：`Object.prototype.__proto__` 返回为`null`且不可修改
+- `prototype`相关API：`getPrototypeOf`、`setPrototypeOf`、`isPrototypeOf`
+
 ## 六、CSS
 
 ### 1 圣杯布局
