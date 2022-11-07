@@ -111,6 +111,33 @@
 - 实现`Object.prototype`特性：`Object.prototype.__proto__` 返回为`null`且不可修改
 - `prototype`相关API：`getPrototypeOf`、`setPrototypeOf`、`isPrototypeOf`
 
+### 8 Map
+
+Map和Object区别：
+
+- Map 键名：可以是基本类型、引用类型
+- Object 键名：只能基本类型
+
+
+- Map 有序的，可迭代的
+- Object 无序的，不可迭代 ES2015规范：建议浏览器厂商对对象枚举采取有序化操作
+
+
+- Map size
+- Object Object.keys().length
+
+
+- Map 可以使用for...of
+- Object 不支持for...of
+
+
+- Map操作底层做了全面优化
+- Object没有做任何优化
+
+
+- Map没有序列化操作
+- Object被支持序列化操作：JSON.stringify parse
+
 ## 六、CSS
 
 ### 1 圣杯布局
