@@ -138,6 +138,10 @@ Map和Object区别：
 - Map没有序列化操作
 - Object被支持序列化操作：JSON.stringify parse
 
+### 9 实现对象for...of
+
+ES6：使用迭代器并实现ES6迭代器
+
 ## 六、CSS
 
 ### 1 圣杯布局
