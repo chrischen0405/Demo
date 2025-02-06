@@ -45,10 +45,9 @@
   ctx.lineWidth = 5;
   ctx.strokeStyle = 'black';
   let isDrawing = false;
-  let startPos = [0, 0]
 
   canvas.addEventListener('mousemove', (ev) => {
-    const [x, y] = changePos(ev)
+    const [x, y] = getMousePosition(ev)
     text.textContent = `(${x.toFixed(0)}, ${y.toFixed(0)})`
     if (isDrawing) {
       ctx.lineTo(x, y);
@@ -58,19 +57,18 @@
 
   canvas.addEventListener('mousedown', (ev) => {
     isDrawing = true
-    const [x, y] = changePos(ev)
-    startPos = [x, y]
+    const [x, y] = getMousePosition(ev)
+    ctx.beginPath()
     ctx.moveTo(x, y);
   })
 
   canvas.addEventListener('mouseup', (ev) => {
-    const [x, y] = changePos(ev)
-    if (startPos[0] === x && startPos[1] === y) {
-      // 点击画布时
+    isDrawing = false
+    const [x, y] = getMousePosition(ev)
+    if (isSingleClick(ev)) {
       ctx.lineTo(x + 1, y + 1)
       ctx.stroke()
     }
-    isDrawing = false;
   })
 
   // 鼠标移出边框时停止绘制
@@ -78,9 +76,14 @@
     isDrawing = false;
   })
 
-  function changePos(ev) {
+  function getMousePosition(ev) {
     const rect = canvas.getBoundingClientRect()
     return [ev.clientX - rect.left, ev.clientY - rect.top]
+  }
+
+  // 判断是否为单击
+  function isSingleClick(ev) {
+    return ev.detail === 1
   }
 </script>
 
