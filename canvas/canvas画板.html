@@ -8,18 +8,23 @@
     #myCanvas {
       border: 1px solid #000;
       display: block;
+      margin: 0 auto;
     }
 
     body {
       margin: 0;
       padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       background-color: #f0f0f0;
     }
 
     #position {
-      display: inline-block;
-      margin-top: 10px;
-      margin-left: 10px;
+      position: fixed;
+      top: 10px;
+      left: 10px;
       font-family: Arial, sans-serif;
       background-color: rgba(255, 255, 255, 0.8);
       padding: 5px;
@@ -34,47 +39,41 @@
   <div id="position"></div>
 </body>
 <script>
-  var txt = document.getElementById("position");
-  var c = document.getElementById("myCanvas");
-  var ctx = c.getContext('2d');
+  const text = document.getElementById("position");
+  const canvas = document.getElementById("myCanvas");
+  const ctx = canvas.getContext('2d');
   ctx.lineWidth = 5;
   ctx.strokeStyle = 'black';
-  var flag = 0;
+  let isDrawing = false;
 
-  c.onmousemove = function (ev) {
-    var x = changePos(ev)[0];
-    var y = changePos(ev)[1];
-    var str = '(' + x + ',' + y + ')';
-    txt.innerHTML = str;
-    if (flag == 1) {
-      ctx.lineTo(x - c.offsetLeft, y - c.offsetTop);
+  canvas.addEventListener('mousemove', (ev) => {
+    const [x, y] = changePos(ev)
+    text.textContent = `(${x.toFixed(0)}, ${y.toFixed(0)})`
+    if (isDrawing) {
+      ctx.lineTo(x, y);
       ctx.stroke();
     }
-    if (x >= 799 || y >= 599) {//鼠标移除边框停止继续绘制
-      flag = 0;
-    }
-  }
-  c.onmousedown = function (ev) {
-    flag = 1;
-    var x = changePos(ev)[0];
-    var y = changePos(ev)[1];
+  })
+
+  canvas.addEventListener('mousedown', (ev) => {
+    isDrawing = true
+    const [x, y] = changePos(ev)
     ctx.moveTo(x, y);
     ctx.lineTo(x + 1, y + 1);//鼠标点击时有反应
-  }
-  c.onmouseup = function () {
-    flag = 0;
-  }
+  })
+
+  canvas.addEventListener('mouseup', _ => {
+    isDrawing = false;
+  })
+
+  // 鼠标移出边框时停止绘制
+  canvas.addEventListener('mouseout', _ => {
+    isDrawing = false;
+  })
 
   function changePos(ev) {
-    var oEvent = ev || event;
-    var pos = [];
-    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
-    var top = oEvent.clientY + scrollTop;
-    var left = oEvent.clientX + scrollLeft;
-    pos[0] = left;
-    pos[1] = top;
-    return pos;
+    const rect = canvas.getBoundingClientRect()
+    return [ev.clientX - rect.left, ev.clientY - rect.top]
   }
 </script>
 
