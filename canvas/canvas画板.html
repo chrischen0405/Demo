@@ -45,6 +45,7 @@
   ctx.lineWidth = 5;
   ctx.strokeStyle = 'black';
   let isDrawing = false;
+  let startPos = [0, 0]
 
   canvas.addEventListener('mousemove', (ev) => {
     const [x, y] = changePos(ev)
@@ -58,11 +59,17 @@
   canvas.addEventListener('mousedown', (ev) => {
     isDrawing = true
     const [x, y] = changePos(ev)
+    startPos = [x, y]
     ctx.moveTo(x, y);
-    ctx.lineTo(x + 1, y + 1);//鼠标点击时有反应
   })
 
-  canvas.addEventListener('mouseup', _ => {
+  canvas.addEventListener('mouseup', (ev) => {
+    const [x, y] = changePos(ev)
+    if (startPos[0] === x && startPos[1] === y) {
+      // 点击画布时
+      ctx.lineTo(x + 1, y + 1)
+      ctx.stroke()
+    }
     isDrawing = false;
   })
 
