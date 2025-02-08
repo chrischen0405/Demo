@@ -44,13 +44,7 @@
 
 <a href="https://chrischen0405.github.io/Demo/canvas/canvas%E7%88%B1%E5%BF%83%E5%86%92%E6%B3%A1%E7%89%B9%E6%95%88/index.html" target="_blank">预览</a>
 
-### 6 canvas扭蛋机
-
-一个简单的扭蛋机demo，利用canvas绘制扭蛋动画
-
-<a href="https://chrischen0405.github.io/Demo/canvas/canvas%E6%89%AD%E8%9B%8B%E6%9C%BA%E6%95%88%E6%9E%9C/index.html" target="_blank">预览</a>
-
-### 7 lufylegend拼图华容道小游戏
+### 6 lufylegend拼图华容道小游戏
 
 使用<a href="http://www.lufylegend.com/api/zh_CN/out/" target="_blank">lufylegend.js</a>游戏引擎完成拼图华容道小游戏，小游戏除了游戏功能以外，支持自定义图片上传，并且图片过大进行图片压缩，使用<a href="https://fengyuanchen.github.io/cropper/" target="_blank">cropper</a>插件完成图片裁剪功能，建议在手机端<a href="https://chrischen0405.github.io/Demo/canvas/lufylegend/index.html" target="_blank">试玩</a>
 
