@@ -1,6 +1,6 @@
 const canvas = document.getElementById('myCanvas')
 const ctx = canvas.getContext('2d')
-const SPEED = 6 // 烟花速度
+const SPEED = 15 // 烟花速度
 let mouseX = null
 let mouseY = null
 const fireworks = []
@@ -16,8 +16,23 @@ function init() {
   })
 
   function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-    fireworks.forEach(fw => fw.update()) //使烟花向上升起
+    // 设置黑色背景，让白色烟花更明显
+    ctx.fillStyle = 'black'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    // 设置默认填充样式
+    ctx.fillStyle = 'white'
+    // 清理已完成的烟花 - 修复版本
+    for (let i = fireworks.length - 1; i >= 0; i--) {
+      const fw = fireworks[i]
+      fw.update()
+      // 只在烟花尾迹和所有火花尾迹都完全消失后才清理
+      if (fw.exploded && fw.tail.length === 0) {
+        const allFiresGone = fw.fire.every(fire => fire.tail.length === 0);
+        if (allFiresGone) {
+          fireworks.splice(i, 1)
+        }
+      }
+    }
     requestAnimationFrame(animate)
   }
 
@@ -26,7 +41,7 @@ function init() {
 
 class Fireworks {
   constructor(x, y) {
-    this.r = 1
+    this.r = 1 // 恢复原本尺寸
     this.endX = x // 烟花结束位置
     this.endY = y
     this.startX = random(0, canvas.width) // 随机烟花开始横坐标
@@ -35,30 +50,62 @@ class Fireworks {
     this.x = this.startX
     this.y = this.startY
     this.tail = []//存放烟花轨迹的数组
-    this.fire = newFire(x, y) // 烟花爆炸后的火花
+    this.fire = [] // 烟花爆炸后的火花，初始为空
+    this.exploded = false // 是否已经爆炸
   }
 
   update() {
     if (this.y > this.endY) {
-      this.x += this.speedX()
-      this.y += this.speedY()
-      this.tail.unshift([this.x, this.y]) // 将烟花该时刻位置存进数组
-      if (this.tail.length >= 20) { // 数组大小决定烟花尾巴长度
+      // 烟花还在上升阶段
+      const steps = 3; // 恢复原本步骤数
+      const stepSpeedX = this.speedX() / steps;
+      const stepSpeedY = this.speedY() / steps;
+
+      for (let i = 0; i < steps; i++) {
+        this.x += stepSpeedX;
+        this.y += stepSpeedY;
+        this.tail.unshift([this.x, this.y]);
+      }
+
+      if (this.tail.length >= 40) { // 保持尾巴长度
         this.tail.pop()
       }
-    }
-    this.drawTail()
-    if (this.y <= this.endY) { // 烟花到达终点后不再前进，尾部逐渐缩短
-      this.tail.pop()
+
+      this.drawTail()
+    } else {
+      // 烟花已到达目标位置
+      if (!this.exploded) {
+        // 第一次到达，创建火花
+        this.fire = newFire(this.endX, this.endY)
+        this.exploded = true
+      }
+      // 烟花爆炸后不再绘制本体，只绘制消失的尾迹
+      if (this.tail.length > 0) {
+        this.tail.pop()
+        this.drawTail()
+      }
+      // 更新火花
       this.bomb()
     }
   }
 
   // 绘制烟花尾部
   drawTail() {
-    this.tail.forEach(([x, y]) => {
+    // 只在上升阶段绘制烟花头部
+    if (this.y > this.endY) {
       ctx.beginPath()
-      ctx.arc(x, y, this.r, 0, 2 * Math.PI)
+      ctx.fillStyle = 'white'
+      ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI)
+      ctx.fill()
+      ctx.closePath()
+    }
+    // 绘制尾迹
+    this.tail.forEach(([x, y], index) => {
+      ctx.beginPath()
+      const alpha = 1 - (index / this.tail.length)
+      const radius = this.r * alpha
+      ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`
+      ctx.arc(x, y, radius, 0, 2 * Math.PI)
       ctx.fill()
       ctx.closePath()
     })
@@ -93,44 +140,79 @@ class Fire {
   constructor(x, y) {
     this.x = x // 火花产生点为烟花爆炸点
     this.y = y
-    this.r = 3
-    this.gravity = 0.03 // 火花所受重力
-    this.friction = 0.9999 // 火花所受摩擦力
-    this.speedX = random(-SPEED, SPEED) // 使火花从随机方向打开
-    this.speedY = random(-SPEED, SPEED)
+    this.r = 2
+    this.gravity = 0.02 // 火花所受重力，减小重力
+    this.friction = 0.998 // 火花所受摩擦力，增加摩擦
+    this.speedX = random(-SPEED * 0.6, SPEED * 0.6) // 减少火花初始速度
+    this.speedY = random(-SPEED * 0.8, SPEED * 0.3)
     this.tail = []
     this.color = ranColorNum() // 火花颜色
   }
 
   update() {
     if (this.y <= canvas.height && this.x <= canvas.width && this.x >= 0) {
-      this.x += this.speedX
-      this.y += this.speedY
+      // 为火花也添加步骤细分来保持连续性
+      const steps = 3;
+      const stepSpeedX = this.speedX / steps;
+      const stepSpeedY = this.speedY / steps;
+      const stepGravity = this.gravity / steps;
+
+      for (let i = 0; i < steps; i++) {
+        this.x += stepSpeedX;
+        this.y += stepSpeedY;
+        this.speedY += stepGravity; // 分步应用重力
+        this.tail.unshift([this.x, this.y, ranColor(this.color)]);
+      }
+
       this.color += 1 // 火花颜色渐变
       this.speedX *= this.friction // 火花所受摩擦力影响
-      this.speedY += this.gravity // 火花所受重力影响
-      this.tail.unshift([this.x, this.y, ranColor(this.color)]) // 将火花轨迹存入数组
-      if (this.tail.length >= 50) { // 数组长度决定火花轨迹长度
+
+      if (this.tail.length >= 40) { // 调整火花轨迹长度
+        this.tail.pop()
+      }
+    } else {
+      // 火花出屏后逐渐清理尾迹，而不是直接消失
+      if (this.tail.length > 0) {
         this.tail.pop()
       }
     }
     this.draw()
-    if (this.y > canvas.height || this.x >= canvas.width || this.x <= 0) {
-      this.tail.pop() // 当火花达到边界后释放轨迹
-    }
   }
 
   // 绘制火花
   draw() {
-    this.tail.forEach(([x, y, color]) => {
-      ctx.beginPath() // 保存画布状态，不然火花颜色会影响烟花颜色
-      ctx.save()
-      ctx.fillStyle = color
-      ctx.arc(x, y, this.r, 0, 2 * Math.PI)
-      ctx.fill()
-      ctx.closePath()
-      ctx.restore()
-    })
+    for (let i = 0; i < this.tail.length - 1; i++) {
+      const [x1, y1, color1] = this.tail[i];
+      const [x2, y2, color2] = this.tail[i + 1];
+
+      ctx.beginPath();
+      ctx.save();
+
+      const alpha = 1 - (i / this.tail.length);
+      ctx.strokeStyle = color1;
+      ctx.globalAlpha = alpha;
+      ctx.lineWidth = this.r * alpha;
+
+      // 使用线条连接相邻点，保持连续性
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+
+      ctx.closePath();
+      ctx.restore();
+    }
+
+    // 绘制火花头部
+    if (this.tail.length > 0) {
+      const [x, y, color] = this.tail[0];
+      ctx.beginPath();
+      ctx.save();
+      ctx.fillStyle = color;
+      ctx.arc(x, y, this.r, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.closePath();
+      ctx.restore();
+    }
   }
 }
 
