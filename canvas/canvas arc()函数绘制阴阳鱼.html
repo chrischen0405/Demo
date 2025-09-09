@@ -1,62 +1,62 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>阴阳鱼</title>
-    <style>
-        #myCanvas {
-            border: black solid 1px;
-            background: #E0FFFF;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>阴阳鱼</title>
+  <style>
+    #myCanvas {
+      border: black solid 1px;
+      background: #E0FFFF;
+    }
+  </style>
 </head>
 <body>
 <canvas id="myCanvas" width="400px" height="400px"></canvas>
 </body>
 <script>
-    let canvas = document.getElementById("myCanvas");
-    let ctx = canvas.getContext('2d');
-    //arc()函数参数列表共传入六个参数
-    // 第一个参数圆心横坐标
-    // 第二个参数圆心纵坐标
-    // 第三个参数圆的半径长度
-    // 第四个参数绘制的起点
-    // 第五个参数绘制的终点
-    // 第六个可选参数绘制的方向，true为逆时针，false为顺时针，默认为false
+  let canvas = document.getElementById("myCanvas");
+  let ctx = canvas.getContext('2d');
+  //arc()函数参数列表共传入六个参数
+  // 第一个参数圆心横坐标
+  // 第二个参数圆心纵坐标
+  // 第三个参数圆的半径长度
+  // 第四个参数绘制的起点
+  // 第五个参数绘制的终点
+  // 第六个可选参数绘制的方向，true为逆时针，false为顺时针，默认为false
 
-    ctx.beginPath();
-    ctx.arc(200, 200, 150.5, 0, 2 * Math.PI, false);//半径增加0.5防止之后绘制使外圈黑线变模糊
-    ctx.stroke();//绘制圆最外圈
+  ctx.beginPath();
+  ctx.arc(200, 200, 150.5, 0, 2 * Math.PI, false);//半径增加0.5防止之后绘制使外圈黑线变模糊
+  ctx.stroke();//绘制圆最外圈
 
-    ctx.beginPath();
-    ctx.fillStyle = '#000';
-    ctx.arc(200, 200, 150, -Math.PI / 2, Math.PI / 2);
-    ctx.fill();//绘制黑色半圆
+  ctx.beginPath();
+  ctx.fillStyle = '#000';
+  ctx.arc(200, 200, 150, -Math.PI / 2, Math.PI / 2);
+  ctx.fill();//绘制黑色半圆
 
-    ctx.beginPath();
-    ctx.fillStyle = '#FFF';
-    ctx.arc(200, 200, 150, -Math.PI / 2, Math.PI / 2, true);
-    ctx.fill();//绘制白色半圆
+  ctx.beginPath();
+  ctx.fillStyle = '#FFF';
+  ctx.arc(200, 200, 150, -Math.PI / 2, Math.PI / 2, true);
+  ctx.fill();//绘制白色半圆
 
-    ctx.beginPath();
-    ctx.fillStyle = '#FFF';
-    ctx.arc(200, 275, 75, -Math.PI / 2, Math.PI / 2);
-    ctx.fill();//绘制白色小半圆
+  ctx.beginPath();
+  ctx.fillStyle = '#FFF';
+  ctx.arc(200, 275, 75, -Math.PI / 2, Math.PI / 2);
+  ctx.fill();//绘制白色小半圆
 
-    ctx.beginPath();
-    ctx.fillStyle = '#000';
-    ctx.arc(200, 125, 75, -Math.PI / 2, Math.PI / 2, true);
-    ctx.fill();//绘制黑色小半圆
+  ctx.beginPath();
+  ctx.fillStyle = '#000';
+  ctx.arc(200, 125, 75, -Math.PI / 2, Math.PI / 2, true);
+  ctx.fill();//绘制黑色小半圆
 
-    ctx.beginPath();
-    ctx.fillStyle = '#000';
-    ctx.arc(200, 275, 15, 0, 2 * Math.PI);
-    ctx.fill();//绘制黑色鱼眼
+  ctx.beginPath();
+  ctx.fillStyle = '#000';
+  ctx.arc(200, 275, 15, 0, 2 * Math.PI);
+  ctx.fill();//绘制黑色鱼眼
 
-    ctx.beginPath();
-    ctx.fillStyle = '#FFF';
-    ctx.arc(200, 125, 15, 0, 2 * Math.PI);
-    ctx.fill();//绘制白色鱼眼
+  ctx.beginPath();
+  ctx.fillStyle = '#FFF';
+  ctx.arc(200, 125, 15, 0, 2 * Math.PI);
+  ctx.fill();//绘制白色鱼眼
 
 </script>
 </html>

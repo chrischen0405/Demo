@@ -1,37 +1,35 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>ajax demo1</title>
-	</head>
-	<body>
-		<div id="test">
-			
-		</div>
-		<button onclick="clickbutton()">click</button>
-	</body>
-	<script type="text/javascript">
-		var xmlhttp;
-		function loadXMLDoc(url,func){
-			if (window.XMLHttpRequest) {
-				//IE7+、Firefox、Chrome、Safari、Opera使用 XMLHttpRequest 对象
-				xmlhttp=new XMLHttpRequest();
-			}
-			else {
-				//IE5 和 IE6使用 ActiveX 对象
-				xmlhttp=new ActiveXObject("Micosoft.XMLHTTP");
-			}
-			xmlhttp.onreadystatechange=func;//func是回调函数
-			xmlhttp.open("GET",url,true);//url是服务器文件
-			xmlhttp.send();
-		}
-		function clickbutton(){
-			loadXMLDoc("test.txt",function(){
-				if (xmlhttp.readyState===4 && xmlhttp.status===200)//readystate等于4，status等于200表示响应就绪
-				{
-					document.getElementById("test").innerHTML=xmlhttp.responseText;
-				}
-			})
-		}
-	</script>
+  <head>
+    <meta charset="utf-8" />
+    <title>ajax demo1</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <button onclick="clickbutton()">click</button>
+  </body>
+  <script type="text/javascript">
+    var xmlhttp;
+    function loadXMLDoc(url,func){
+      if (window.XMLHttpRequest) {
+        //IE7+、Firefox、Chrome、Safari、Opera使用 XMLHttpRequest 对象
+        xmlhttp=new XMLHttpRequest();
+      }
+      else {
+        //IE5 和 IE6使用 ActiveX 对象
+        xmlhttp=new ActiveXObject("Micosoft.XMLHTTP");
+      }
+      xmlhttp.onreadystatechange=func;//func是回调函数
+      xmlhttp.open("GET",url,true);//url是服务器文件
+      xmlhttp.send();
+    }
+    function clickbutton(){
+      loadXMLDoc("test.txt",function(){
+        if (xmlhttp.readyState===4 && xmlhttp.status===200)//readystate等于4，status等于200表示响应就绪
+        {
+          document.getElementById("test").innerHTML=xmlhttp.responseText;
+        }
+      })
+    }
+  </script>
 </html>

@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>6.3按钮涟漪</title>
+</head>
+
+<body>
+  <div>
+  <button class="btn btn-primary">
+    一般按钮
+    <span class="mask mask-1"></span>
+  </button>
+  <button class="btn btn-success">
+    成功按钮
+    <span class="mask mask-2"></span>
+  </button>
+  <button class="btn btn-warning">
+    警告按钮
+    <span class="mask mask-3"></span>
+  </button>
+  <button class="btn btn-danger">
+    危险按钮
+    <span class="mask mask-4"></span>
+  </button>
+  </div>
+</body>
+<style>
+  button {
+  cursor: pointer;
+  }
+
+  .btn {
+  position: relative;
+  height: 40px;
+  padding: 0 15px;
+  color: #ffffff;
+  font-size: 16px;
+  border: transparent solid 1px;
+  border-radius: 10px;
+  margin: 0 10px;
+  }
+
+  .btn-primary {
+  background-color: #409EFF;
+  border-color: #408EFF;
+  }
+
+  .btn-success {
+  background-color: #67C23A;
+  border-color: #47B23A;
+  }
+
+  .btn-warning {
+  background-color: #E6A23C;
+  border-color: #E6823C;
+  }
+
+  .btn-danger {
+  background-color: #F56C6C;
+  border-color: #F55C6C;
+  }
+
+  .mask {
+  position: absolute;
+  height: 100%;
+  background-color: #ffffff;
+  opacity: 1;
+  }
+
+  .mask-1 {
+  top: 0;
+  right: 0;
+  }
+
+  .mask-2 {
+  top: 0;
+  left: 0;
+  border-top-right-radius: 40px;
+  }
+
+  .mask-3 {
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  }
+
+  .mask-4 {
+  width: 100%;
+  height: 0;
+  left: 0;
+  bottom: 0;
+  }
+
+  .btn-primary:hover .mask {
+  animation-name: btn-animation-one;
+  animation-duration: 1s;
+  }
+
+  .btn-success:hover .mask {
+  animation-name: btn-animation-one;
+  animation-duration: 1s;
+  }
+
+  .btn-warning:hover .mask {
+  animation-name: btn-animation-two;
+  animation-duration: 1s;
+  }
+
+  .btn-danger:hover .mask {
+  animation-name: btn-animation-three;
+  animation-duration: 1s;
+  }
+
+  @keyframes btn-animation-one {
+  from {
+    width: 0;
+    opacity: 1;
+  }
+
+  to {
+    width: 100%;
+    opacity: 0;
+  }
+  }
+
+  @keyframes btn-animation-two {
+  from {
+    width: 1px;
+    height: 1px;
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  to {
+    width: 1px;
+    height: 1px;
+    transform: scale(100);
+    opacity: 0;
+  }
+  }
+
+  @keyframes btn-animation-three {
+  from {
+    height: 0;
+    opacity: 1;
+  }
+
+  to {
+    height: 100%;
+    opacity: 0;
+  }
+  }
+</style>
+
+</html>

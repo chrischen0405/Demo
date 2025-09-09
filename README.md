@@ -142,34 +142,35 @@ ES6：使用迭代器并实现ES6迭代器
 
 ## 六、CSS
 
-### 1 圣杯布局
+### 1 布局
 
+#### 圣杯布局
 CSS经典三列布局，左右两栏固定，中间自适应
 
-<a href="https://chrischen0405.github.io/Demo/HTML&CSS/%E5%B8%83%E5%B1%80/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80.html" target="_blank">预览</a>
+<a href="https://chrischen0405.github.io/Demo/HTML&CSS/6-1layout/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80.html" target="_blank">预览</a>
 
-### 2 双飞翼布局
+#### 双飞翼布局
 
 同圣杯布局，三列布局，左右两栏固定，中间自适应
 
-<a href="https://chrischen0405.github.io/Demo/HTML&CSS/%E5%B8%83%E5%B1%80/%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80.html" target="_blank">预览</a>
+<a href="https://chrischen0405.github.io/Demo/HTML&CSS/6-1layout/%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80.html" target="_blank">预览</a>
 
-### 3 按钮涟漪
+### 2 按钮涟漪
 
 - 第一个按钮从右到左动画
 - 第二个按钮从右到左带圆角动画
 - 第三个按钮中心扩散动画
 - 第四个按钮从下至上动画
 
-<a href="https://chrischen0405.github.io/Demo/HTML&CSS/6-3按钮涟漪.html" target="_blank">预览</a>
+<a href="https://chrischen0405.github.io/Demo/HTML&CSS/6-2按钮涟漪.html" target="_blank">预览</a>
 
-### 4 绘制三角形
+### 3 绘制三角形
 
 方向依次为上、下、左、右的三角形
 
-<a href="https://chrischen0405.github.io/Demo/HTML&CSS/6-4triangle/index.html" target="_blank">预览</a>
+<a href="https://chrischen0405.github.io/Demo/HTML&CSS/6-3triangle/index.html" target="_blank">预览</a>
 
-### 5 清除浮动
+### 4 清除浮动
 
 ## 七、Echarts
 

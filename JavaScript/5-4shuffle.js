@@ -1,17 +1,17 @@
-/**
+﻿/**
  * 洗牌函数
  * @param arr
  * @returns {*}
  */
 function shuffle (arr) {
-    let res = arr.slice()
-    for (let i = 0; i < res.length; i++) {
-        const j = getRandomNumber(0, i)
-        const temp = res[i]
-        res[i] = res[j]
-        res[j] = temp
-    }
-    return res
+  let res = arr.slice()
+  for (let i = 0; i < res.length; i++) {
+    const j = getRandomNumber(0, i)
+    const temp = res[i]
+    res[i] = res[j]
+    res[j] = temp
+  }
+  return res
 }
 
 /**
@@ -21,7 +21,7 @@ function shuffle (arr) {
  * @returns {number}
  */
 function getRandomNumber (min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min)
+  return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 const testArr = [1, 2, 3, 4, 5]
