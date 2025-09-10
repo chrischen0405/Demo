@@ -155,6 +155,12 @@ CSS经典三列布局，左右两栏固定，中间自适应
 
 <a href="https://chrischen0405.github.io/Demo/HTML&CSS/6-1layout/%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80.html" target="_blank">预览</a>
 
+#### 瀑布流布局
+
+多列布局，子元素不固定高度，滚动到底部优先往最短那列添加数据
+
+<a href="https://chrischen0405.github.io/Demo/HTML&CSS/6-1layout/瀑布流布局/index.html" target="_blank">预览</a>
+
 ### 2 按钮涟漪
 
 - 第一个按钮从右到左动画

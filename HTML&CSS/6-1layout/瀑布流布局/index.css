@@ -1,0 +1,197 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+}
+
+/* 瀑布流容器 */
+.waterfall-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* 瀑布流列 */
+.waterfall-column {
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* 瀑布流项目 */
+.waterfall-item {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.waterfall-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.item-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.waterfall-item:hover .item-image {
+  transform: scale(1.05);
+}
+
+.item-content {
+  padding: 20px;
+}
+
+.item-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.item-description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.tag {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.item-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.item-likes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.heart {
+  color: #e74c3c;
+  font-size: 1.1rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .waterfall-column {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  body {
+    padding: 10px;
+  }
+
+  .waterfall-container {
+    gap: 10px;
+  }
+
+  .waterfall-column {
+    gap: 10px;
+  }
+}
+
+/* 加载动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.waterfall-item {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* 为不同的项目添加延迟 */
+.waterfall-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.waterfall-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.waterfall-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.waterfall-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.waterfall-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.waterfall-item:nth-child(6) {
+  animation-delay: 0.6s;
+}
